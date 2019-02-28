@@ -1,7 +1,37 @@
 <% if logged_in? %>
-  
-  <p>ログイン完了ユーザ:<%= current_user.name %></p>
 
+  <h1><%= current_user.name %>さんのタスク</h1>
+
+  <% if @tasks.any? %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="col-xs-2">id</th>
+        <th class="col-xs-5">タスク</th>
+        <th class="xol-xs-5">状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+    
+        <tr>
+          <td><%= link_to task.id, task %></td>
+          <td><%= task.content %></td>
+          <td><%= task.status %></td>
+        </tr>
+      
+      <% end %>
+    </tbody>
+  
+  </table>
+
+
+  <div>
+    <%= paginate @tasks %>
+  </div>
+  
+  <% end %>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
