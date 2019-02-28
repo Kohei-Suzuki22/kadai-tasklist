@@ -3,25 +3,9 @@
     
     <%= form_for(task) do |f| %>
     
-    <% if task.errors.any? %>
+      <%= render "layouts/error_messages", model: f.object %>
+
     
-      <div id="error_explanation">
-        <div class="alert alert-warning">
-          <ul>
-            <% task.errors.full_messages.each do |message| %>
-            <li>
-              <%= message %>
-            </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
-    
-    
-    
-    <div>
-      
       <div class="form-group">
         <%= f.label :content, "タスク" %>
         <%= f.text_field :content, class:"form-control" %>
@@ -32,9 +16,7 @@
         <%= f.text_field :status, class:"form-control" %>
       </div>
     
-    </div>
-    
-    <%= f.submit "作成", class:"btn btn-primary" %>
+      <%= f.submit "作成", class:"btn btn-primary" %>
     
     <% end %> 
 
