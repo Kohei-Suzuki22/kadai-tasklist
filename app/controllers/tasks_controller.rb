@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   
-  before_action :dry_task_find, only: [:show, :edit, :update, :destroy]
   before_action :require_uer_logged_in
   before_action :correct_user, only: [:show,:edit,:update,:destroy]
   
